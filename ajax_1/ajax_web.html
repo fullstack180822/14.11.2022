@@ -11,7 +11,7 @@
         Click me
     </button>
     <script>
-        var debug 
+        var debug
         function click_me() {
 
             // engine to fire ajax
@@ -21,16 +21,20 @@
                 // promise 
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     console.log(xhr.responseText);
-                    let arr  =   JSON.parse(xhr.responseText)
-                    arr.forEach(element => {
-                        document.write(JSON.stringify(element) + '<br/>')
-                    });
+                    let arr = JSON.parse(xhr.responseText)
+                    document.write(xhr.responseText)
+                    //arr.forEach(element => {
+                    //document.write(JSON.stringify(element) + '<br/>')
+                    //});
+                    debug = xhr
                 }
             }
 
             xhr.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
-            
-            xhr.send(null);
+
+            xhr.send();
+            // https://jsonplaceholder.typicode.com/albums
+            // <br /> <hr />
         }
     </script>
 
