@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <hr />
+    <button onclick="click_me()">
+        Click me
+    </button>
+    <script>
+        var debug 
+        function click_me() {
+
+            // engine to fire ajax
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                // promise 
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    console.log(xhr.responseText);
+                    let arr  =   JSON.parse(xhr.responseText)
+                    arr.forEach(element => {
+                        document.write(JSON.stringify(element) + '<br/>')
+                    });
+                }
+            }
+
+            xhr.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
+            
+            xhr.send(null);
+        }
+    </script>
+
+</body>
+
+</html>
